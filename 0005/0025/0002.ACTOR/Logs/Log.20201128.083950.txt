@@ -1,0 +1,14 @@
+Data received: 0
+Data received: 1
+Data received: 2
+Data received: 3
+Data received: 4
+Data received: 5
+Data received: 6
+Data received: 7
+Data received: 8
+Data received: 9
++++
+Working Cycles: 10
+Scenario #2
+Bilateral (default) synchronization
