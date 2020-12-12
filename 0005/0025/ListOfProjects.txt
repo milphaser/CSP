@@ -1,0 +1,611 @@
+*********************************************************************************
+LIST OF PROJECTS/REVISION HISTORY
+*********************************************************************************
+Project Group 0005/CSP Namespace
+*********************************************************************************
+Each project has one of the next type of status:
+	Idea
+	Under development
+	Uncompleted
+	Completed
+*********************************************************************************
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++	STAGE 0									+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0001 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_Proto_Channel
+Description
+	Identical to the project 0004:0011 (InterThreadCommunication)
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++	STAGE 1									+
++	csp namespace development						+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0002 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_PC_1_1
+Description
+	{P || Q} Producer-Customer Type 1:1
+	
+	[csp namespace ver. 0.1]
+(*)	csp::chan
+		csp::chan::msg
+		csp::chan::send()
+		csp::chan::recv()
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0003 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_PC_1_1_pama
+Description
+	{P || Q} Producer-Customer Type 1:1
+	Protection against multiple acquisition (pama) of channel endpoints added.
+	Successfully tested but abandoned for now.
+	
+	[csp namespace ver. 0.1.pama
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0004 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_PBC_1_1_1.01
+Description
+	{P || Q || C} Producer-Buffer-Customer Type 1:1:1
+	
+	[csp namespace ver. 0.1]
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0005 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_2P1C_BW.02
+Description
+	{P1 || Q || P2} Type 2:1
+	Non-determinism
+	std::ref()
+	
+	[csp namespace ver. 0.2]
+(*)	csp::alt (2-channel)/Busy Wait Loop implementation
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++	STAGE 2									+
++	csp namespace Release Candidates					+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0006 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_2P1C.03
+Description
+	{P1 || Q || P2} Type 2:1
+	Non-determinism
+	WaitOnForMultipleEvents implementation of csp::alt
+	(Reference: project 0004.0015 WaitOnForMultipleEvents_D)
+	std::addressof
+
+	[csp namespace ver. 0.3]
+	csp::alt (2-channel, n-channel)/common ptr implementation
+	
+	Ако се внесе задръжка в doProducer се наблюдава отработване
+	на първото съобщение от P1 и P2, след което фунцкията csp::alt зависва.
+	Причините:
+	1. Липсва сигнализация cv.notify от csp::chan::send
+	2. cv.wait(Predicate()) първо проверява Predicate(), след което
+	се обръща към wait, т.е. условно
+		while(!Predicate())
+		{
+			wait(lock);
+		}
+	Ако няма задръжка в doProducer, всички съобщения се изпращат преди
+	cv.wait(Predicate()) и фактически не се отработва изчакване.
+	Решение:
+	1. Да се предвиди глобална cv за всяка отделна алтернативна команда
+	2. Глобалната cv за дадена алтернативна команда да се сигнализира
+	от csp::chan::send
+Status:	Incomplete - reserved for illustration above effect
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0007 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_2P1Q.04
+Description
+	{P1 || Q || P2} Type 2:1
+	CSP_2P1C.03 evolution
+	Тръгва първоначално от 0005.0006/CSP_2P1C.03 с единствена разлика -
+	използването на std::shared_ptr вместо обикновени указатели.
+	Констатира се същия резултат, отбелязан при 0005.0006.
+	При отсраняването на причината чрез добавянето на глобална cv за 
+	всяка една алтернативна команда се достига до ver. 0.4 RC.
+	Вариантът с обикновените указатели също би могъл да се развие по
+	този начин, но е изоставен, като използващ остаряла и по-несигурна форма.
+
+	[csp namespace ver. 0.4RC
+(*)	csp::chan::send() with multiplexing, when send msg to alternative command
+(*)	csp::alt (2-channel, n-channel)/std::shared_ptr implementation
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0008 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_CCS.04
+Description
+	S = {P1 || P2 || P3 || P4 || Q1 || Q2 || C}
+	0008.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 8.D. Exemplary sample system.png
+	Complex Communication Scheme (CCS) Testbed
+	Logs
+
+	[csp namespace ver. 0.4RC]
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0009 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_CCSU.04
+Description
+	S = {P1 || P2 || P3 || P4 || Q1 || Q2 || C}
+	0008.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 8.D. Exemplary sample system.png
+	Complex Communication Scheme with Unification (CCSU) Testbed
+	Logs
+	
+	Проектът е идентичен по условие и съдържание с 0005.0008/CSP_CCS.04.
+	Разликата е в опита за уеднаквяване получаването на съобщение, 
+	независимо дали входът на процеса е един или множествен.
+	За целта и при единичен вход (процесът Q1) се пробва използването на алтернативна команда, 
+	но с една защита. 
+	
+	Положителният резултат и полученото значително уеднаквяване на комуникационната схема
+	дава възможност да се продължи с доразвитие на csp namespace ver. 0.4RC в 0.5RC,
+	планирано в следващия проект 0005.0009/CSP_CCSU.05RC.
+
+	[csp namespace ver. 0.4 RC]
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0010 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+  	CSP_CCSU.05RC
+Description
+	S = {P1 || P2 || P3 || P4 || Q1 || Q2 || C}
+	0008.png
+  	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 8.D. Exemplary sample system.png
+	Complex Communication Scheme (CCS) Testbed
+	Logs
+
+	Проектът е идентичен по условие и съдържание с 0005.0009/CSP_CCSU.04
+	Тук обаче, на основание получения при 0005.0009/CSP_CCSU.04 резултат
+	csp namespace ver. 0.4RC се доразвива в csp namespace ver. 0.5RC
+
+	[csp namespace ver. 0.5RC]
+	csp::chan
+		csp::chan::send()
+		csp::chan::recv()
+
+(*)	csp::mux
+		мултиплексиране по вход
+	csp::mux::recv()
+		csp::alt() replacement
+		n-channels, non-deterministic/two dispatching modes
+		- by place
+		- non-deterministic
+
+    		"заетото изчакване" buzy_wait като диспечеризация се премахва,
+		като противоречащо на новоприетата обединена комуникационна схема.
+    		съответно отпада и необходимостта от 2-канален вариант на csp::alt()
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0011 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+  	CSP_1P5Q.06RC
+Description
+	S = {P || Q1 || Q2 || Q3 || Q4 || Q5}
+	0011.png
+  	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 9.D. Fork.png
+	Output Fork Testbed
+	Logs
+
+	[csp namespace ver. 0.6RC]
+	csp::chan
+		csp::chan::recv()
+		csp::chan::send()
+
+	csp::mux
+		мултиплексиране по вход (n:1 communication by input)
+	csp::mux::recv()
+		csp::alt() replacement
+		n-channels, non-deterministic/two dispatching modes
+		- by place
+		- non-deterministic (default)
+
+(*)	csp::fork
+		вилка по изход (1:n communication by output/broadcast)
+	csp::fork::send()
+		n-channels/two broadcast modes
+		- by place
+		- parallel broadcast (default)
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0012 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+  	CSP_1P5Q1C.06RC
+Description
+	S = {P || Q1 || Q2 || Q3 || Q4 || Q5 || C}
+	0012.png
+  	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 10.D. Fork-Mux.png
+	Output Fork - Input Mux Testbed
+	Logs
+
+	[csp namespace ver. 0.6RC]
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++	STAGE 3									+
++	Applications								+
++	[csp namespace ver. 0.6RC]						+
++	[csp namespace ver. 0.7RC]						+
++	[csp namespace ver. 0.8RC]						+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0013 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_1P1Q_AASHO.06RC
+Description
+	Application: Alternate access to shared object (AASHO)
+	As a protected shared object is used std::wcout
+	S = {P || Q}
+	0013.1.png C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.4.1. AASHO.png
+	0013.2.png C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.4.2. AASHO.png
+	Logs
+	
+	[csp namespace ver. 0.6RC]
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0014 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_3P_CoP.06RC
+Description
+	Application: Coprocedures (CoP)
+	CSP_1P1Q_AASHO.06RC evolution, as CSP_1P1Q_AASHO.06RC could be considered 
+	as example of 2 coprocedures system.
+	S = {P1 || P2 || P3}
+	0014.png C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.5. CoP.png
+	Logs
+	
+	[csp namespace ver. 0.6RC]
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0015 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_3P1C_DME_CoP.07RC
+Description
+	Application: Distributed Mutual Exclusion with Central Server (DME)
+	(*) Var1: Centralized control of coprocedures (Strong predefined sequential dispatching)
+	As a protected shared object is used std::wcout
+	
+	Manifold usage:
+	- coprocedures dispatching with central server (Var1)
+	- analogue to distributed mutual exclusion with central server (Var2)
+	S = {P1 || P2 || P3 || C}
+	0015.png C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.6. DME.png
+	Logs
+	
+	[csp namespace ver. 0.7RC]
+	csp::chan
+		csp::chan::recv()
+		csp::chan::send()
+
+	csp::mux
+		мултиплексиране по вход (n:1 communication by input)
+	csp::mux::recv()
+		csp::alt() replacement
+		n-channels, non-deterministic/two dispatching modes
+		- by place
+		- non-deterministic (default)
+(*)	csp::mux::recv(cid)
+		unicast receive
+
+	csp::fork
+		вилка по изход (1:n communication by output/broadcast)
+	csp::fork::send()
+		n-channels/two broadcast modes
+		- by place
+		- parallel broadcast (default)
+(*)	csp::fork::send(cid)
+		unicast send mode
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0016 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_3P1C_DME_Var2.07RC
+Description
+	Application: Distributed Mutual Exclusion with Central Server (DME)
+	(*) Var2: Non-deterministic dispatching
+	As a protected shared object is used std::wcout
+	Delay(grant) = Tgrant - Treq
+	
+	Manifold usage:
+	- coprocedures dispatching with central server (Var1)
+	- analogue to distributed mutual exclusion with central server (Var2)
+	S = {P1 || P2 || P3 || C}
+	0015.png C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.6. DME.png
+	Logs
+	
+	[csp namespace ver. 0.7RC]
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0017 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Group
+	Basic
+	
+	0002 ++++++
+Project Name
+	CSP_PC_1_1 => CSP_1P1Q.07RC
+Description
+	Application: Producer-Customer Type 1:1
+	{P || Q}
+	0017.0002.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 2.1. Pair of communicating processes.png
+
+	0004 ++++++
+Project Name
+	CSP_PBC_1_1_1.01 => CSP_1P1Q1C.07RC
+Description
+	Application: Producer-Buffer-Customer Type 1:1:1
+	{P || Q || C}
+	0017.0004.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 2.2. Pair of communicating processes with buffering.png
+
+	0007 ++++++
+Project Name
+	CSP_2P1Q.04 => CSP_2P1Q.07RC
+Description
+	Application: Producer-Customer Type 2:1 (Non-determinism)
+	{P1 || Q || P2}
+	0017.0007.1.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 4. 2-channel non-deterministic selection.png
+	0017.0007.2.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.1. mux (n to 1).png
+	Logs
+	
+	[csp namespace ver. 0.7RC]
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0018 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_3P1Q_sink.08RC
+Description
+	Application: Sink type input (n:1/n) Testbed
+	S = {P1 || P2 || P3 || Q}
+	Q = {{P1 ? dst[1] || P2 ? dst[2] ||P3 ? dst[3]}; print(dst);}
+	0018.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.1.2. sink (n to 1).png
+	Logs
+	
+	[csp namespace ver. 0.8RC]
+	csp::chan
+		csp::chan::recv()
+		csp::chan::send()
+
+	csp::mux
+		мултиплексиране по вход (n:1 communication by input)
+	csp::mux::recv()
+		csp::alt() replacement
+		n-channels, non-deterministic/two dispatching modes
+		- by place
+		- non-deterministic (default)
+	csp::mux::recv(cid)
+		unicast receive
+
+(*)	csp::sink
+		вилка по вход (n:1/n communication by input)
+	csp::sink::recv()
+		n-channels/two sinking modes
+		- by place
+		- parallel (default)
+
+	csp::fork
+		вилка по изход (1:n communication by output/broadcast)
+	csp::fork::send()
+		n-channels/two broadcast modes
+		- by place
+		- parallel broadcast (default)
+	csp::fork::send(cid)
+		unicast send mode
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0019 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_Sink_Mux.08RC
+Description
+	Application: Sink-Mux Exemplary System
+	CSP_3P1Q_sink.08RC evolution
+	 S = {S1 || S2 || C}
+	S1 = {P1 || P2 || P3 || Q1}
+	S2 = {P4 || P5 || P6 || Q2}
+	Q1 = {{P1 ? dst[1] || P2 ? dst[2] ||P3 ? dst[3]}; C ! dst}
+	Q2 = {{P4 ? dst[1] || P5 ? dst[2] ||P6 ? dst[3]}; C ! dst}
+	 C = {{Q1 ? var [] Q2 ? var}; print(var);}
+	0019.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.1.3. Sink-Mux Exemplary System.png
+	Logs
+	
+	[csp namespace ver. 0.8RC]
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0020 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_PC_1_1 => CSP_1P1Q.07RC => CSP_1P1Q.09RC
+Description
+	Application: Producer-Customer Type 1:1
+	{P || Q}
+	0017.0002.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 2.1. Pair of communicating processes.png
+
+	There we have next scenarious:
+	1. Delay(P) > Delay(Q) => O'K
+	2. Delay(P) < Delay(Q) => The need of buffering between P and Q, if not used CSP channel
+	3. Delay(P) = Delay(Q) = 0 => The same as above conclusion
+
+	[csp namespace ver. 0.9RC]
+	csp::chan
+		csp::chan::recv()
+(*)		csp::chan::send(csp::chan::Sync)
+		- bilateral  (default) synchronization
+		- unilateral (not CSP) synchronization
+		
+	csp::mux
+		мултиплексиране по вход (n:1 communication by input)
+	csp::mux::recv()
+		csp::alt() replacement
+		n-channels, non-deterministic/two dispatching modes
+		- by place
+		- non-deterministic (default)
+	csp::mux::recv(cid)
+		unicast receive
+
+	csp::sink
+		вилка по вход (n:1/n communication by input)
+	csp::sink::recv()
+		n-channels/two sinking modes
+		- by place
+		- parallel (default)
+
+	csp::fork
+		вилка по изход (1:n communication by output/broadcast)
+	csp::fork::send()
+		n-channels/two broadcast modes
+		- by place
+		- parallel broadcast (default)
+	csp::fork::send(cid)
+		unicast send mode
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0021 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_ASO_MB.09RC
+	[CSP_PBC_1_1_1.01 => CSP_1P1Q1C.07RC + CSP_3P1C_DME_Var2.07RC]
+	[CSP_1P1Q.09RC (unilateral synchronization is possible here because of cyclic comm. scheme)]
+Description
+	Application: Active Shared Object/Active Mailbox
+
+	Unlike Projects 0004 and 0017.0004, it is assumed that between the Producer P 
+	the Consumer Q there is placed an Active Buffer (ASO) from a special process C,
+	for decoupling P and Q by speed.
+	S = {P || C || Q}
+
+	Access to the Active Shared Objects is controlled by specialized processes/threads.
+	
+	0017.0021.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.7. ASO.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.7. Spec.ASO.CentralServer.docx
+
+	There we have next scenarious to test unilateral synchronization:
+	1. Delay(P) > Delay(Q) 		=> O'K
+	2. Delay(P) < Delay(Q) 		=> O'K
+	3. Delay(P) = Delay(Q) = 0 	=> O'K
+	All of the above under bilateral and unilateral synchronization.
+
+	[csp namespace ver. 0.9RC]
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++	STAGE 4									+
++	Applications with Active Objects (ASO, Actors)				+
++	[csp namespace ver. 0.91RC]						+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0022 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_ACTOR_MB.09RC
+	[CSP_ASO_MB.09RC => CSP_ACTOR_MB.09RC]
+Description
+	Application: Actor Implementation of Mailbox/Active Mailbox
+	S = {P || C || Q}
+
+	0017.0021.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.7. ASO.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.7. Spec.ASO.CentralServer.docx
+
+	Actors Modes:
+	1 - Actors as separate local objects
+	2 - Actors as separate dynamic objects
+	3 - Actors encapsulated in one object (*)
+
+	DISTINGTION:
+	AO Controller (C) should be explicitly joined
+	before destruction as it containts the shared object
+	(in this case it is the queue).
+
+	[csp namespace ver. 0.9RC]
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0023 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_ACTOR_MB.091RC
+	[CSP_ACTOR_MB.09RC]
+Description
+	Identical to CSP_ACTOR_MB.09RC,
+	but uses refactored csp namespace ver. 0.91RC
+
+	[csp namespace ver. 0.91RC]
+	identical to ver. 0.9RC but refactored: public members before
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0024 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Name
+	CSP_3P1C_ACTOR_DME.091RC
+	[CSP_3P1C_DME_Var2.07RC + CSP_ACTOR_MB.091RC => CSP_3P1C_ACTOR_DME.091RC]
+Description
+	Application: Actor Implementation of DME Var2
+	Project 0005.0016 [CSP_3P1C_DME_Var2.07RC] implemented as Actor,
+	following Project 0005.0023 [CSP_ACTOR_MB.091RC]
+
+	0015.png C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.6. DME.png
+
+	[csp namespace ver. 0.91RC]
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0005.0025 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Project Group
+	Basic
+	
+	0002 ++++++
+Project Name
+	CSP_PC_1_1 => CSP_1P1Q.07RC => CSP_1P1Q.09RC => CSP_1P1Q.091RC
+Description
+	Application: Producer-Customer Type 1:1
+	{P || Q}
+	0017.0002.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 2.1. Pair of communicating processes.png
+
+	0002.ACTOR ++++++
+Project Name
+	CSP_1P1Q.091RC => CSP_ACTOR_1P1Q.091RC
+Description
+	Application: Producer-Customer Type 1:1
+	{P || Q}
+	0017.0002.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 2.1. Pair of communicating processes.png
+
+	0007 ++++++
+Project Name
+	CSP_2P1Q.04 => CSP_2P1Q.07RC => CSP_2P1Q.091RC
+Description
+	Application: Producer-Customer Type 2:1 (Non-determinism)
+	{P1 || Q || P2}
+	0017.0007.1.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 4. 2-channel non-deterministic selection.png
+	0017.0007.2.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.1. mux (n to 1).png
+	Logs
+	
+	0007.ACTOR ++++++
+Project Name
+	CSP_2P1Q.091RC => CSP_ACTOR_2P1Q.091RC
+Description
+	Application: Producer-Customer Type 2:1 (Non-determinism)
+	{P1 || Q || P2}
+	0017.0007.1.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 4. 2-channel non-deterministic selection.png
+	0017.0007.2.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.1. mux (n to 1).png
+	Logs
+	
+	[csp namespace ver. 0.91RC]
+Status:	Completed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
