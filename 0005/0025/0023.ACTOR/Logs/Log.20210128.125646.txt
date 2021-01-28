@@ -1,0 +1,26 @@
+<put> held
+0
+<put> held
+1
+<put> held
+2
+<put> held
+3
+<put> held
+4
+<put> held
+5
+<put> held
+6
+<put> held
+7
+<put> held
+8
+<put> held
+9
++++
+Working Cycles: 10
+Actors Mode #3
+Scenario #3
+Max buf size #1
+Bilateral (default) synchronization

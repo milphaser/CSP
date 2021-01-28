@@ -491,7 +491,7 @@ Description
 
 	Access to the Active Shared Objects is controlled by specialized processes/threads.
 	
-	0017.0021.png
+	0021.png
 	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.7. ASO.png
 	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.7. Spec.ASO.CentralServer.docx
 
@@ -517,7 +517,7 @@ Description
 	Application: Actor Implementation of Mailbox/Active Mailbox
 	S = {P || C || Q}
 
-	0017.0021.png
+	0021.png
 	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.7. ASO.png
 	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.7. Spec.ASO.CentralServer.docx
 
@@ -606,8 +606,30 @@ Description
 	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.1. mux (n to 1).png
 	Logs
 
-	TODO
+	TODO_List.txt
 	
+	0023.ACTOR ++++++
+Project Name
+	CSP_ACTOR_MB.091RC
+Description
+	Application: Actor Implementation of Mailbox/Active Mailbox
+	Identical to Project 0005.0023 [CSP_ACTOR_MB.091RC]
+	S = {P || C || Q}
+
+	0021.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.7. ASO.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.7. Spec.ASO.CentralServer.docx
+
+	Actors Modes:
+	1 - Actors as separate local objects
+	2 - Actors as separate dynamic objects
+	3 - Actors encapsulated in one object (*)
+
+	DISTINGTION:
+	AO Controller (C) should be explicitly joined
+	before destruction as it containts the shared object
+	(in this case it is the queue).
+
 	0024.ACTOR ++++++
 Project Name
 	CSP_3P1C_ACTOR_DME.091RC
