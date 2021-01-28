@@ -4,7 +4,7 @@
  Article: Implementation of the CSP Semantics of Inter-Process Communications using the C++11 Standard Library.
  http://conf.uni-ruse.bg/bg/docs/cp20/bp/bp-4.pdf
 
- Folder 0005 contains CSP library's two sample projects in development stage:
+ Folder 0005 contains CSP library's sample projects in development stage:
  1. Classical Producer-Consumer Problem
  2. Non-deterministic Consumer Problem
 

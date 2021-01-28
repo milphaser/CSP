@@ -10,7 +10,7 @@
 //		0017.0007.2.png
 //		C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.1. mux (n to 1).png
 //
-//		csp namespace ver. 0.7RC >>>
+//		csp namespace ver. 0.91RC >>>
 //	Status: Completed
 /////////////////////////////////////////////////////////////////////////////
 #pragma hdrstop

@@ -1,0 +1,157 @@
++++
+P2 requested control [Time(req)=12:57:33]
+C granted control to P2
+<P2::00> [Delay(grant)=43 ms] [T(access)=500 ms]
+P2 released control
++++
+P1 requested control [Time(req)=12:57:33]
+C granted control to P1
+<P1::00> [Delay(grant)=581 ms] [T(access)=500 ms]
+P1 released control
++++
+P2 requested control [Time(req)=12:57:34]
+C granted control to P2
+<P2::01> [Delay(grant)=521 ms] [T(access)=500 ms]
+P2 released control
++++
+P1 requested control [Time(req)=12:57:34]
+C granted control to P1
+<P1::01> [Delay(grant)=510 ms] [T(access)=500 ms]
+P1 released control
++++
+P2 requested control [Time(req)=12:57:35]
+C granted control to P2
+<P2::02> [Delay(grant)=516 ms] [T(access)=500 ms]
+P2 released control
++++
+P3 requested control [Time(req)=12:57:33]
+C granted control to P3
+<P3::00> [Delay(grant)=2590 ms] [T(access)=500 ms]
+P3 released control
++++
+P2 requested control [Time(req)=12:57:36]
+C granted control to P2
+<P2::03> [Delay(grant)=520 ms] [T(access)=500 ms]
+P2 released control
++++
+P2 requested control [Time(req)=12:57:37]
+C granted control to P2
+<P2::04> [Delay(grant)=5 ms] [T(access)=500 ms]
+P2 released control
++++
+P1 requested control [Time(req)=12:57:35]
+C granted control to P1
+<P1::02> [Delay(grant)=2057 ms] [T(access)=500 ms]
+P1 released control
++++
+P3 requested control [Time(req)=12:57:36]
+C granted control to P3
+<P3::01> [Delay(grant)=1544 ms] [T(access)=500 ms]
+P3 released control
++++
+P3 requested control [Time(req)=12:57:38]
+C granted control to P3
+<P3::02> [Delay(grant)=5 ms] [T(access)=500 ms]
+P3 released control
++++
+P3 requested control [Time(req)=12:57:39]
+C granted control to P3
+<P3::03> [Delay(grant)=5 ms] [T(access)=500 ms]
+P3 released control
++++
+P1 requested control [Time(req)=12:57:38]
+C granted control to P1
+<P1::03> [Delay(grant)=1543 ms] [T(access)=500 ms]
+P1 released control
++++
+P1 requested control [Time(req)=12:57:40]
+C granted control to P1
+<P1::04> [Delay(grant)=5 ms] [T(access)=500 ms]
+P1 released control
++++
+P3 requested control [Time(req)=12:57:39]
+C granted control to P3
+<P3::04> [Delay(grant)=1029 ms] [T(access)=500 ms]
+P3 released control
++++
+P3 requested control [Time(req)=12:57:41]
+C granted control to P3
+<P3::05> [Delay(grant)=5 ms] [T(access)=500 ms]
+P3 released control
++++
+P1 requested control [Time(req)=12:57:40]
+C granted control to P1
+<P1::05> [Delay(grant)=1035 ms] [T(access)=500 ms]
+P1 released control
++++
+P2 requested control [Time(req)=12:57:37]
+C granted control to P2
+<P2::05> [Delay(grant)=4621 ms] [T(access)=500 ms]
+P2 released control
++++
+P3 requested control [Time(req)=12:57:41]
+C granted control to P3
+<P3::06> [Delay(grant)=1030 ms] [T(access)=500 ms]
+P3 released control
++++
+P2 requested control [Time(req)=12:57:42]
+C granted control to P2
+<P2::06> [Delay(grant)=521 ms] [T(access)=500 ms]
+P2 released control
++++
+P1 requested control [Time(req)=12:57:42]
+C granted control to P1
+<P1::06> [Delay(grant)=1547 ms] [T(access)=500 ms]
+P1 released control
++++
+P1 requested control [Time(req)=12:57:44]
+C granted control to P1
+<P1::07> [Delay(grant)=5 ms] [T(access)=500 ms]
+P1 released control
++++
+P2 requested control [Time(req)=12:57:43]
+C granted control to P2
+<P2::07> [Delay(grant)=1032 ms] [T(access)=500 ms]
+P2 released control
++++
+P1 requested control [Time(req)=12:57:44]
+C granted control to P1
+<P1::08> [Delay(grant)=517 ms] [T(access)=500 ms]
+P1 released control
++++
+P2 requested control [Time(req)=12:57:45]
+C granted control to P2
+<P2::08> [Delay(grant)=516 ms] [T(access)=500 ms]
+P2 released control
++++
+P2 requested control [Time(req)=12:57:46]
+C granted control to P2
+<P2::09> [Delay(grant)=4 ms] [T(access)=500 ms]
+P2 released control
++++
+P3 requested control [Time(req)=12:57:43]
+C granted control to P3
+<P3::07> [Delay(grant)=3607 ms] [T(access)=500 ms]
+P3 released control
++++
+P1 requested control [Time(req)=12:57:45]
+C granted control to P1
+<P1::09> [Delay(grant)=1552 ms] [T(access)=500 ms]
+P1 released control
++++
+P3 requested control [Time(req)=12:57:47]
+C granted control to P3
+<P3::08> [Delay(grant)=526 ms] [T(access)=500 ms]
+P3 released control
++++
+P3 requested control [Time(req)=12:57:48]
+C granted control to P3
+<P3::09> [Delay(grant)=5 ms] [T(access)=500 ms]
+P3 released control
++++
++++
+Working Cycles: 10
+Average Delay(grant) P1:  935 ms
+Average Delay(grant) P2:  829 ms
+Average Delay(grant) P3: 1034 ms
++++

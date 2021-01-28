@@ -605,7 +605,20 @@ Description
 	0017.0007.2.png
 	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.1. mux (n to 1).png
 	Logs
+
+	TODO
 	
+	0024.ACTOR ++++++
+Project Name
+	CSP_3P1C_ACTOR_DME.091RC
+	[CSP_3P1C_DME_Var2.07RC + CSP_ACTOR_MB.091RC => CSP_3P1C_ACTOR_DME.091RC]
+Description
+	Application: Actor Implementation of DME Var2
+	Project 0005.0016 [CSP_3P1C_DME_Var2.07RC] implemented as Actor,
+	Identical to Project 0005.0024 [CSP_3P1C_ACTOR_DME.091RC]
+
+	0015.png C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.6. DME.png
+
 	[csp namespace ver. 0.91RC]
 Status:	Completed
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
