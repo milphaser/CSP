@@ -4,6 +4,7 @@
 /////////////////////////////////////////////////////////////////////////////
 //	Description
 //		Application: Producer-Customer Type 1:1
+//		Project 0002 evolution
 //		{P || Q}
 //		0017.0002.png
 //		C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. 2.1. Pair of communicating processes.png

@@ -166,7 +166,7 @@ Description
 	S = {P1 || P2 || P3 || P4 || Q1 || Q2 || C}
 	0008.png
   	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 8.D. Exemplary sample system.png
-	Complex Communication Scheme (CCS) Testbed
+	Complex Communication Scheme with Unification (CCSU) Testbed
 	Logs
 
 	Проектът е идентичен по условие и съдържание с 0005.0009/CSP_CCSU.04
@@ -569,10 +569,12 @@ Project Name
 	CSP_PC_1_1 => CSP_1P1Q.07RC => CSP_1P1Q.09RC => CSP_1P1Q.091RC
 Description
 	Application: Producer-Customer Type 1:1
+	Project 0002 evolution
 	{P || Q}
 	0017.0002.png
 	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 2.1. Pair of communicating processes.png
-
+	Logs
+ 
 	0002.ACTOR ++++++
 Project Name
 	CSP_1P1Q.091RC => CSP_ACTOR_1P1Q.091RC
@@ -581,12 +583,14 @@ Description
 	{P || Q}
 	0017.0002.png
 	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 2.1. Pair of communicating processes.png
+	Logs
 
 	0007 ++++++
 Project Name
 	CSP_2P1Q.04 => CSP_2P1Q.07RC => CSP_2P1Q.091RC
 Description
 	Application: Producer-Customer Type 2:1 (Non-determinism)
+	Project 0007 evolution
 	{P1 || Q || P2}
 	0017.0007.1.png
 	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 4. 2-channel non-deterministic selection.png
@@ -606,7 +610,28 @@ Description
 	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.1. mux (n to 1).png
 	Logs
 
-	TODO_List.txt
+	0008 ++++++
+Project Name
+	CSP_CCS.04 => CSP_CCS.091RC
+Description
+	Application: Complex Communication Scheme (CCS) Testbed
+	Project 0008 evolution
+	S = {P1 || P2 || P3 || P4 || Q1 || Q2 || C}
+	0008.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 8.D. Exemplary sample system.png
+	Logs
+
+	0010 ++++++
+Project Name
+	CSP_CCS.091RC AND CSP_CCSU.05RC => CSP_CCSU.091RC
+Description
+	Application: Complex Communication Scheme with Unification (CCSU) Testbed
+	Project 0025.0008 and 0010 evolution
+	S = {P1 || P2 || P3 || P4 || Q1 || Q2 || C}
+	0008.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 8.D. Exemplary sample system.png
+
+	!!! TODO_List.txt !!!
 	
 	0023.ACTOR ++++++
 Project Name
@@ -619,6 +644,7 @@ Description
 	0021.png
 	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.7. ASO.png
 	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.7. Spec.ASO.CentralServer.docx
+	Logs
 
 	Actors Modes:
 	1 - Actors as separate local objects
@@ -640,6 +666,7 @@ Description
 	Identical to Project 0005.0024 [CSP_3P1C_ACTOR_DME.091RC]
 
 	0015.png C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.6. DME.png
+	Logs
 
 	[csp namespace ver. 0.91RC]
 Status:	Completed
