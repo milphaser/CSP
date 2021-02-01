@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////////////////////////////////
 //	Description
 //		Application: Complex Communication Scheme (CCS) Testbed
-//		Project 0008 evolution
+//		Project 0005.0008 update
 // 		S = {P1 || P2 || P3 || P4 || Q1 || Q2 || C}
 //      0008.png
 //      C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. 8.D. Exemplary sample system.png

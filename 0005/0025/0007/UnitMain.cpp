@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////////////////////////////////
 //	Description
 //		Application: Producer-Customer Type 2:1 (Non-determinism)
-//		Project 0007 evolution
+//		Project 0005.00017.0007 update
 //		{P1 || Q || P2}
 //		0017.0007.1.png
 //		C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. 4. 2-channel non-deterministic selection.png

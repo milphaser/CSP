@@ -4,10 +4,11 @@
 /////////////////////////////////////////////////////////////////////////////
 //	Description
 //		Application: 	Complex Communication Scheme with Unification (CCSU) Testbed
-//		Project 0025.0008 and 0010 evolution
+//		Project 0005.0025.0008 and 0005.0010 update
 //		S = {P1 || P2 || P3 || P4 || Q1 || Q2 || C}
 //		0008.png
 //		C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. 8.D. Exemplary sample system.png
+//		Logs
 //
 //		csp namespac ver. 0.91RC
 //	Status: Completed

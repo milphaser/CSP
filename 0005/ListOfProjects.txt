@@ -109,7 +109,7 @@ Project Name
 	CSP_2P1Q.04
 Description
 	{P1 || Q || P2} Type 2:1
-	CSP_2P1C.03 evolution
+	CSP_2P1C.03 update
 	Тръгва първоначално от 0005.0006/CSP_2P1C.03 с единствена разлика -
 	използването на std::shared_ptr вместо обикновени указатели.
 	Констатира се същия резултат, отбелязан при 0005.0006.
@@ -261,7 +261,7 @@ Project Name
 	CSP_3P_CoP.06RC
 Description
 	Application: Coprocedures (CoP)
-	CSP_1P1Q_AASHO.06RC evolution, as CSP_1P1Q_AASHO.06RC could be considered 
+	CSP_1P1Q_AASHO.06RC update, as CSP_1P1Q_AASHO.06RC could be considered 
 	as example of 2 coprocedures system.
 	S = {P1 || P2 || P3}
 	0014.png C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. x.5. CoP.png
@@ -414,7 +414,7 @@ Project Name
 	CSP_Sink_Mux.08RC
 Description
 	Application: Sink-Mux Exemplary System
-	CSP_3P1Q_sink.08RC evolution
+	CSP_3P1Q_sink.08RC update
 	 S = {S1 || S2 || C}
 	S1 = {P1 || P2 || P3 || Q1}
 	S2 = {P4 || P5 || P6 || Q2}
@@ -569,7 +569,7 @@ Project Name
 	CSP_PC_1_1 => CSP_1P1Q.07RC => CSP_1P1Q.09RC => CSP_1P1Q.091RC
 Description
 	Application: Producer-Customer Type 1:1
-	Project 0002 evolution
+	Project 0005.0002 update
 	{P || Q}
 	0017.0002.png
 	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 2.1. Pair of communicating processes.png
@@ -590,7 +590,7 @@ Project Name
 	CSP_2P1Q.04 => CSP_2P1Q.07RC => CSP_2P1Q.091RC
 Description
 	Application: Producer-Customer Type 2:1 (Non-determinism)
-	Project 0007 evolution
+	Project 0005.0007 update
 	{P1 || Q || P2}
 	0017.0007.1.png
 	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 4. 2-channel non-deterministic selection.png
@@ -615,7 +615,7 @@ Project Name
 	CSP_CCS.04 => CSP_CCS.091RC
 Description
 	Application: Complex Communication Scheme (CCS) Testbed
-	Project 0008 evolution
+	Project 0005.0008 update
 	S = {P1 || P2 || P3 || P4 || Q1 || Q2 || C}
 	0008.png
 	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 8.D. Exemplary sample system.png
@@ -626,10 +626,22 @@ Project Name
 	CSP_CCS.091RC AND CSP_CCSU.05RC => CSP_CCSU.091RC
 Description
 	Application: Complex Communication Scheme with Unification (CCSU) Testbed
-	Project 0025.0008 and 0010 evolution
+	Project 0005.0025.0008 and 0005.0010 update
 	S = {P1 || P2 || P3 || P4 || Q1 || Q2 || C}
 	0008.png
 	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 8.D. Exemplary sample system.png
+	Logs
+
+	0011 ++++++
+Project Name
+	CSP_1P5Q.06RC => CSP_1P5Q.091RC
+Description
+	Application: Output Fork Testbed
+	Project 0005.0011 update
+	S = {P || Q1 || Q2 || Q3 || Q4 || Q5}
+	0011.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\РУ2020\FIG\Fig. 9.D. Fork.png
+	Logs
 
 	!!! TODO_List.txt !!!
 	
