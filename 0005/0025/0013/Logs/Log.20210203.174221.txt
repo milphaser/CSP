@@ -1,0 +1,40 @@
+<P::00> [T(acc)=500 ms]
+P pass control to Q
+<Q::00> [T(acc)=500 ms]
+Q pass control to P
+<P::01> [T(acc)=500 ms]
+P pass control to Q
+<Q::01> [T(acc)=500 ms]
+Q pass control to P
+<P::02> [T(acc)=500 ms]
+P pass control to Q
+<Q::02> [T(acc)=500 ms]
+Q pass control to P
+<P::03> [T(acc)=500 ms]
+P pass control to Q
+<Q::03> [T(acc)=500 ms]
+Q pass control to P
+<P::04> [T(acc)=500 ms]
+P pass control to Q
+<Q::04> [T(acc)=500 ms]
+Q pass control to P
+<P::05> [T(acc)=500 ms]
+P pass control to Q
+<Q::05> [T(acc)=500 ms]
+Q pass control to P
+<P::06> [T(acc)=500 ms]
+P pass control to Q
+<Q::06> [T(acc)=500 ms]
+Q pass control to P
+<P::07> [T(acc)=500 ms]
+P pass control to Q
+<Q::07> [T(acc)=500 ms]
+Q pass control to P
+<P::08> [T(acc)=500 ms]
+P pass control to Q
+<Q::08> [T(acc)=500 ms]
+Q pass control to P
+<P::09> [T(acc)=500 ms]
+P pass control to Q
+<Q::09> [T(acc)=500 ms]
+Q pass control to P

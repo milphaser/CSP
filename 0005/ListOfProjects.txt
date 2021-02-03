@@ -585,6 +585,16 @@ Description
 	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. 2.1. Pair of communicating processes.png
 	Logs
 
+	0004 ++++++
+Project Name
+	CSP_PBC_1_1_1.01 => CSP_1P1Q1C.07RC => CSP_1P1Q1C.091RC
+Description
+	Application: Producer-Buffer-Customer Type 1:1:1
+	Project 0005.0017.0004 update
+	{P || Q || C}
+	0017.0004.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. 2.2. Pair of communicating processes with buffering.png
+
 	0007 ++++++
 Project Name
 	CSP_2P1Q.04 => CSP_2P1Q.07RC => CSP_2P1Q.091RC
@@ -643,6 +653,30 @@ Description
 	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. 9.D. Fork.png
 	Logs
 
+	0012 ++++++
+Project Name
+  	CSP_1P5Q1C.06RC => CSP_1P5Q1C.091RC
+Description
+	Application: Output Fork - Input Mux Testbed
+	Project 0005.0012 update
+	S = {P || Q1 || Q2 || Q3 || Q4 || Q5 || C}
+	0012.png
+  	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. 10.D. Fork-Mux.png
+	Logs
+	
+	0013 ++++++
+Project Name
+	CSP_1P1Q_AASHO.06RC => CSP_1P1Q_AASHO.091RC
+Description
+	Application: Alternate access to shared object (AASHO)
+	As a protected shared object is used std::wcout
+	Project could be considered as example of 2 coprocedures system.
+	Project 0005.0013 update
+	S = {P || Q}
+	0013.1.png C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.4.1. AASHO.png
+	0013.2.png C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.4.2. AASHO.png
+	Logs
+	
 	!!! TODO_List.txt !!!
 	
 	0023.ACTOR ++++++
