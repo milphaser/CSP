@@ -677,8 +677,61 @@ Description
 	0013.2.png C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.4.2. AASHO.png
 	Logs
 	
-	!!! TODO_List.txt !!!
+	0014 ++++++
+Project Name
+	CSP_3P_CoP.06RC => CSP_3P_CoP.091RC
+Description
+	Application: Coprocedures (CoP)
+	Project 0005.0014 update
+	S = {P1 || P2 || P3}
+	0014.1.png C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.5.1. CoP.png
+	0014.2.png C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.5.2. CoP.png
+	Logs
 	
+	0015 ++++++
+Project Name
+	CSP_3P1C_DME_CoP.07RC => CSP_3P1C_DME_CoP.091RC
+Description
+	Application: Distributed Mutual Exclusion with Central Server (DME)
+	(*) Var1: Centralized control of coprocedures (Strong predefined sequential dispatching)
+	As a protected shared object is used std::wcout
+	Project 005.0015 update
+	
+	Manifold usage:
+	- coprocedures dispatching with central server (Var1)
+	- analogue to distributed mutual exclusion with central server (Var2)
+	S = {P1 || P2 || P3 || C}
+	0015.png C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.6. DME.png
+	Logs
+	
+	0018 ++++++
+Project Name
+	CSP_3P1Q_sink.08RC => CSP_3P1Q_sink.091RC
+Description
+	Application: Sink type input (n:1/n) Testbed
+	Project 005.0018 update
+	S = {P1 || P2 || P3 || Q}
+	Q = {{P1 ? dst[1] || P2 ? dst[2] ||P3 ? dst[3]}; print(dst);}
+	0018.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.1.2. sink (n to 1).png
+	Logs
+	
+	0019 ++++++
+Project Name
+	CSP_3P1Q_sink.08RC => CSP_Sink_Mux.08RC => CSP_Sink_Mux.091RC
+Description
+	Application: Sink-Mux Exemplary System
+	Project 005.0019 update
+	 S = {S1 || S2 || C}
+	S1 = {P1 || P2 || P3 || Q1}
+	S2 = {P4 || P5 || P6 || Q2}
+	Q1 = {{P1 ? dst[1] || P2 ? dst[2] ||P3 ? dst[3]}; C ! dst}
+	Q2 = {{P4 ? dst[1] || P5 ? dst[2] ||P6 ? dst[3]}; C ! dst}
+	 C = {{Q1 ? var [] Q2 ? var}; print(var);}
+	0019.png
+	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.1.3. Sink-Mux Exemplary System.png
+	Logs
+
 	0023.ACTOR ++++++
 Project Name
 	CSP_ACTOR_MB.091RC
@@ -687,9 +740,8 @@ Description
 	Identical to Project 0005.0023 [CSP_ACTOR_MB.091RC]
 	S = {P || C || Q}
 
-	0021.png
-	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.7. ASO.png
-	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.7. Spec.ASO.CentralServer.docx
+	0021.png  C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.7. ASO.png
+	0021.docx C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.7. Spec.ASO.CentralServer.docx
 	Logs
 
 	Actors Modes:
