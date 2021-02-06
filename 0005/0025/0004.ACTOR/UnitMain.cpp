@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////////
 //	Project Name
-//		CSP_PBC_1_1_1.01 => CSP_1P1Q1C.07RC => CSP_1P1Q1C.091RC
+//		CSP_1P1Q1C.091RC => CSP_ACTOR_1P1Q1C.091RC
 /////////////////////////////////////////////////////////////////////////////
 //	Description
 //		Application: Producer-Buffer-Customer Type 1:1:1
@@ -8,7 +8,6 @@
 //		{P || Q || C}
 //		0017.0004.png
 //		C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. 2.2. Pair of communicating processes with buffering.png
-//      Logs
 //
 //		csp namespace ver. 0.091RC >>>
 //	Status: Completed
@@ -61,22 +60,21 @@ int _tmain(int argc, _TCHAR* argv[])
 	////////////////////////////////////////////////////////////////////////////
 	//  PROCESSES
 	////////////////////////////////////////////////////////////////////////////
-	std::vector<std::thread> vThreads;
 	//
 	//	S = {P || Q}
 	//
-	vThreads.push_back(std::thread(doP, chanPQ));
-	vThreads.push_back(std::thread(doQ, chanPQ, chanQC));
-	vThreads.push_back(std::thread(doC, chanQC));
 	////////////////////////////////////////////////////////////////////////////
-
-	for(auto& t: vThreads)
+	//
 	{
-		if(t.joinable())
-		{
-			t.join();
-		}
-	}
+		parsys parSys
+		(
+			chanPQ,			// actorP
+			chanPQ, chanQC, // actorQ
+			chanQC			// actorC
+		);
+	}   // 	RAII => join
+	//
+	////////////////////////////////////////////////////////////////////////////
 
 	////////////////////////////////////////////////////////////////////////////
 	//  Run Parameters/Report
@@ -111,59 +109,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	system("pause");
 
 	return 0;
-}
-//------------------------------------------------------------------------------
-//  Main function of process P
-//  Producer
-void doP(CHAN_PTR out)
-{
-	MSG msg;
-
-	for(auto i = 0; i < LIMIT; i++)
-	{
-		// P = {Q ! i}
-		msg = std::to_wstring(i);
-		out->send(msg);
-
-		// Delay to check for Race Conditions
-		std::this_thread::sleep_for(std::chrono::milliseconds(rcc_delay(1)));
-	}
-}
-//------------------------------------------------------------------------------
-//  Main function of process Q
-//  Buffer
-void doQ(CHAN_PTR in, CHAN_PTR out)
-{
-	MSG var;
-
-	for(auto i = 0; i < LIMIT; i++)
-	{
-		// {P ? var}
-		in->recv(var);
-		// {C ! var}
-		out->send(var);
-
-		// Delay to check for Race Conditions
-		std::this_thread::sleep_for(std::chrono::milliseconds(rcc_delay(2)));
-	}
-}
-//------------------------------------------------------------------------------
-//  Main function of process C
-//  Consumer
-void doC(CHAN_PTR in)
-{
-	MSG var;
-
-	for(auto i = 0; i < LIMIT; i++)
-	{
-		// C = {Q ? var}
-		in->recv(var);
-
-		std::wstringstream wss;
-		wss << "Data received: " << var << std::endl;
-		std::wcout << wss.str();
-		wof << wss.str();
-	}
 }
 //------------------------------------------------------------------------------
 
