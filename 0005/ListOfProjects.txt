@@ -628,6 +628,12 @@ Description
 	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. 8.D. Exemplary sample system.png
 	Logs
 
+	0008.ACTOR ++++++
+Project Name
+	CSP_CCS.04 => CSP_CCS.091RC => CSP_ACTOR_CCS.091RC
+Description
+	Project 0005.0017.0008 Actor Implementation
+
 	0010 ++++++
 Project Name
 	CSP_CCS.091RC AND CSP_CCSU.05RC => CSP_CCSU.091RC
@@ -638,6 +644,12 @@ Description
 	0008.png
 	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. 8.D. Exemplary sample system.png
 	Logs
+
+	0010.ACTOR ++++++
+Project Name
+	CSP_CCS.091RC AND CSP_CCSU.05RC => CSP_CCSU.091RC => CSP_ACTOR_CCSU.091RC
+Description
+	Project 0005.0017.0010 Actor Implementation
 
 	0011 ++++++
 Project Name
@@ -650,6 +662,12 @@ Description
 	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. 9.D. Fork.png
 	Logs
 
+	0011.ACTOR ++++++
+Project Name
+	CSP_1P5Q.06RC => CSP_1P5Q.091RC => CSP_ACTOR_1P5Q.091RC
+Description
+	Project 0005.0017.0011 Actor Implementation
+
 	0012 ++++++
 Project Name
   	CSP_1P5Q1C.06RC => CSP_1P5Q1C.091RC
@@ -661,6 +679,12 @@ Description
   	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. 10.D. Fork-Mux.png
 	Logs
 	
+	0012.ACTOR ++++++
+Project Name
+  	CSP_1P5Q1C.06RC => CSP_1P5Q1C.091RC => CSP_ACTOR_1P5Q1C.091RC
+Description
+	Project 0005.0017.0012 Actor Implementation
+
 	0013 ++++++
 Project Name
 	CSP_1P1Q_AASHO.06RC => CSP_1P1Q_AASHO.091RC
