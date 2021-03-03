@@ -579,14 +579,14 @@ Description
 Project Name
 	CSP_1P1Q.091RC => CSP_ACTOR_1P1Q.091RC
 Description
-	Project 0005.0017.0002 Actor Implementation
+	Project 0005.0025.0002 Actor Implementation
 
 	0004 ++++++
 Project Name
 	CSP_PBC_1_1_1.01 => CSP_1P1Q1C.07RC => CSP_1P1Q1C.091RC
 Description
 	Application: Producer-Buffer-Customer Type 1:1:1
-	Project 0005.0017.0004 update
+	Project 0005.0025.0004 update
 	{P || Q || C}
 	0017.0004.png
 	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. 2.2. Pair of communicating processes with buffering.png
@@ -596,7 +596,7 @@ Description
 Project Name
 	CSP_1P1Q1C.091RC => CSP_ACTOR_1P1Q1C.091RC
 Description
-	Project 0005.0017.0004 Actor Implementation
+	Project 0005.0025.0004 Actor Implementation
 
 	0007 ++++++
 Project Name
@@ -615,7 +615,7 @@ Description
 Project Name
 	CSP_2P1Q.091RC => CSP_ACTOR_2P1Q.091RC
 Description
-	Project 0005.0017.0007 Actor Implementation
+	Project 0005.0025.0007 Actor Implementation
 
 	0008 ++++++
 Project Name
@@ -632,7 +632,7 @@ Description
 Project Name
 	CSP_CCS.04 => CSP_CCS.091RC => CSP_ACTOR_CCS.091RC
 Description
-	Project 0005.0017.0008 Actor Implementation
+	Project 0005.0025.0008 Actor Implementation
 
 	0010 ++++++
 Project Name
@@ -649,7 +649,7 @@ Description
 Project Name
 	CSP_CCS.091RC AND CSP_CCSU.05RC => CSP_CCSU.091RC => CSP_ACTOR_CCSU.091RC
 Description
-	Project 0005.0017.0010 Actor Implementation
+	Project 0005.0025.0010 Actor Implementation
 
 	0011 ++++++
 Project Name
@@ -666,7 +666,7 @@ Description
 Project Name
 	CSP_1P5Q.06RC => CSP_1P5Q.091RC => CSP_ACTOR_1P5Q.091RC
 Description
-	Project 0005.0017.0011 Actor Implementation
+	Project 0005.0025.0011 Actor Implementation
 
 	0012 ++++++
 Project Name
@@ -683,7 +683,7 @@ Description
 Project Name
   	CSP_1P5Q1C.06RC => CSP_1P5Q1C.091RC => CSP_ACTOR_1P5Q1C.091RC
 Description
-	Project 0005.0017.0012 Actor Implementation
+	Project 0005.0025.0012 Actor Implementation
 
 	0013 ++++++
 Project Name
@@ -698,6 +698,12 @@ Description
 	0013.2.png C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.4.2. AASHO.png
 	Logs
 	
+	0013.ACTOR ++++++
+Project Name
+  	CSP_1P1Q_AASHO.06RC => CSP_1P1Q_AASHO.091RC => CSP_ACTOR_1P1Q_AASHO.091RC
+Description
+	Project 0005.0025.0013 Actor Implementation
+
 	0014 ++++++
 Project Name
 	CSP_3P_CoP.06RC => CSP_3P_CoP.091RC
@@ -709,6 +715,12 @@ Description
 	0014.2.png C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.5.2. CoP.png
 	Logs
 	
+	0014.ACTOR ++++++
+Project Name
+	CSP_3P_CoP.06RC => CSP_3P_CoP.091RC => CSP_ACTOR_3P_CoP.091RC
+Description
+	Project 0005.0025.0014 Actor Implementation
+
 	0015 ++++++
 Project Name
 	CSP_3P1C_DME_CoP.07RC => CSP_3P1C_DME_CoP.091RC
@@ -725,6 +737,12 @@ Description
 	0015.png C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.6. DME.png
 	Logs
 	
+	0015.ACTOR ++++++
+Project Name
+	CSP_3P1C_DME_CoP.07RC => CSP_3P1C_DME_CoP.091RC => CSP_ACTOR_3P1C_DME_CoP.091RC
+Description
+	Project 0005.0025.0015 Actor Implementation
+
 	0018 ++++++
 Project Name
 	CSP_3P1Q_sink.08RC => CSP_3P1Q_sink.091RC
@@ -777,8 +795,8 @@ Description
 
 	0024.ACTOR ++++++
 Project Name
-	CSP_3P1C_ACTOR_DME.091RC
-	[CSP_3P1C_DME_Var2.07RC + CSP_ACTOR_MB.091RC => CSP_3P1C_ACTOR_DME.091RC]
+	CSP_ACTOR_3P1C_DME.091RC
+	[CSP_3P1C_DME_Var2.07RC + CSP_ACTOR_MB.091RC => CSP_ACTOR_3P1C_DME.091RC]
 Description
 	Application: Actor Implementation of DME Var2
 	Project 0005.0016 [CSP_3P1C_DME_Var2.07RC] implemented as Actor,

@@ -1,17 +1,21 @@
 /////////////////////////////////////////////////////////////////////////////
 //	Project Name
-//		CSP_ACTOR_3P1C_DME.091RC
-//		[CSP_3P1C_DME_Var2.07RC + CSP_ACTOR_MB.091RC => CSP_ACTOR_3P1C_DME.091RC]
+//      CSP_3P1C_DME_CoP.07RC => CSP_3P1C_DME_CoP.091RC => CSP_ACTOR_3P1C_DME_CoP.091RC
 /////////////////////////////////////////////////////////////////////////////
 //	Description
-//		Application: Actor Implementation of DME Var2
-//		Project 0005.0016 [CSP_3P1C_DME_Var2.07RC] implemented as Actor,
-//		following Project 0005.0023 [CSP_ACTOR_MB.091RC]
+//		Application: Distributed Mutual Exclusion with Central Server (DME)
+//		(*) Var1:	Centralized control of coprocedures
+//			   		Strong predefined sequential dispatching
+//		As a protected shared object is used std::wcout
 //
+//		Manifold usage:
+//		- coprocedures dispatching with central server (Var1)
+//		- analogue to distributed mutual exclusion with central server (Var2)
 //		S = {P1 || P2 || P3 || C}
 //		0015.png C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.6. DME.png
+//      Logs
 //
-//		[csp namespace ver. 0.91RC]
+//		csp namespace ver. 0.91RC >>>
 //	Status: Completed
 /////////////////////////////////////////////////////////////////////////////
 #pragma hdrstop
@@ -27,10 +31,16 @@
 #include "UnitMain.h"
 //---------------------------------------------------------------------------
 #include <iomanip>
+#include <iostream>
+#include <string>
+#include <fstream>
 #include <sstream>
+
+#include <thread>
+#include <ctime>
+#include <chrono>
 //------------------------------------------------------------------------------
-std::wofstream wof;         // Log file
-int delays[3];          	// Total delays to grant by process
+std::wofstream wof;
 //------------------------------------------------------------------------------
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -65,16 +75,19 @@ int _tmain(int argc, _TCHAR* argv[])
 	FORK_PTR forkOutC = std::make_shared<FORK>();
 	forkOutC->add(chanCP1);
 	forkOutC->add(chanCP2);
-	forkOutC->add(chanCP3);
+	forkOutC->
+	add(chanCP3);
 	////////////////////////////////////////////////////////////////////////////
 
 	std::cout << ">>> Application: Distributed Mutual Exclusion with Central Server" << std::endl;
+	std::cout << ">>> (*) Var1: \tCentralized control of coprocedures" << std::endl;
+	std::cout << ">>> \t\tStrong predefined sequential dispatching" << std::endl;
 	std::cout << "<<< Run >>>" << std::endl;
 	////////////////////////////////////////////////////////////////////////////
 	//  PROCESSES
 	////////////////////////////////////////////////////////////////////////////
 	//
-	//		S = {P1 || P2 || P3 || C}
+	//	S = {P1 || P2 || P3 || C}
 	//
 	////////////////////////////////////////////////////////////////////////////
 	//
@@ -86,33 +99,6 @@ int _tmain(int argc, _TCHAR* argv[])
 			   muxInC, forkOutC);   	// actorC (AO Controller/Dispatcher)
 	}   // 	RAII => join
 	//
-	////////////////////////////////////////////////////////////////////////////
-
-	////////////////////////////////////////////////////////////////////////////
-	//  Run Parameters/Report
-	//
-	{
-		std::wstringstream wss;
-		wss << "+++" << std::endl
-			<< L"Working Cycles: " + std::to_wstring(LIMIT) << std::endl;
-
-		std::wcout << wss.str();
-		wof << wss.str();
-	}
-	//
-	{
-		std::wstringstream wss;
-		for(auto i = 0; i < 3; i++)
-		{
-			wss << L"Average Delay(grant) P" << std::to_wstring(i+1)
-				<< L": " << std::setw(4) << std::to_wstring(delays[i]/LIMIT)
-				<< L" ms" << std::endl;
-		}
-		wss << "+++" << std::endl;
-
-		std::wcout << wss.str();
-		wof << wss.str();
-	}
 	////////////////////////////////////////////////////////////////////////////
 
 	if(wof.good())
@@ -127,14 +113,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	system("pause");
 
 	return 0;
-}
-//------------------------------------------------------------------------------
-void access(std::wstring msg, std::chrono::milliseconds duration)
-{
-	// Access to shared object
-	std::wcout << msg << "\n";
-	wof << msg << std::endl;
-	std::this_thread::sleep_for(duration);
 }
 //------------------------------------------------------------------------------
 
