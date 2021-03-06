@@ -755,6 +755,12 @@ Description
 	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.1.2. sink (n to 1).png
 	Logs
 	
+	0018.ACTOR ++++++
+Project Name
+	CSP_3P1Q_sink.08RC => CSP_3P1Q_sink.091RC => CSP_ACTOR_3P1Q_sink.091RC
+Description
+	Project 0005.0025.0018 Actor Implementation
+
 	0019 ++++++
 Project Name
 	CSP_3P1Q_sink.08RC => CSP_Sink_Mux.08RC => CSP_Sink_Mux.091RC
