@@ -1,16 +1,21 @@
 /////////////////////////////////////////////////////////////////////////////
 //	Project Name
-//      CSP_3P1Q_sink.08RC => CSP_3P1Q_sink.091RC => CSP_ACTOR_3P1Q_sink.091RC
+//      CSP_3P1Q_sink.08RC => CSP_Sink_Mux.08RC => CSP_Sink_Mux.091RC => CSP_ACTOR_Sink_Mux.091RC
 /////////////////////////////////////////////////////////////////////////////
 //	Description
-//		Application: Sink type input (n:1/n) Testbed
-//		Project 005.0018 update
-//		S = {P1 || P2 || P3 || Q}
-//		Q = {{P1 ? dst[1] || P2 ? dst[2] ||P3 ? dst[3]}; print(dst);}
+//		Application: Sink-Mux Exemplary System
+//		Project 005.0019 update
 //
-//		0018.png
-//		C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.1.2. sink (n to 1).png
-//      Logs
+//		 S = {S1 || S2 || C}
+//		S1 = {P1 || P2 || P3 || Q1}
+//		S2 = {P4 || P5 || P6 || Q2}
+//		Q1 = {{P1 ? dst[1] || P2 ? dst[2] ||P3 ? dst[3]}; C ! dst}
+//		Q2 = {{P4 ? dst[1] || P5 ? dst[2] ||P6 ? dst[3]}; C ! dst}
+//		 C = {{Q1 ? var [] Q2 ? var}; print(var);}
+//
+//		0019.png
+//		C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.1.3. Sink-Mux Exemplary System.png
+//		Logs
 //
 //		[csp namespac ver. 0.91RC]
 //	Status: Completed
@@ -54,34 +59,59 @@ int _tmain(int argc, _TCHAR* argv[])
 	////////////////////////////////////////////////////////////////////////////
 	//
 	//  Channels
-	auto chanP1Q = std::make_shared<CHAN>(L"ChanP1Q");
-	auto chanP2Q = std::make_shared<CHAN>(L"ChanP2Q");
-	auto chanP3Q = std::make_shared<CHAN>(L"ChanP3Q");
+	auto chanP1Q1 = std::make_shared<CHAN>(L"P1Q1");
+	auto chanP2Q1 = std::make_shared<CHAN>(L"P2Q1");
+	auto chanP3Q1 = std::make_shared<CHAN>(L"P3Q1");
 	//
-	// Process Q input channels sink setup
-	SINK_PTR sinkInQ = std::make_shared<SINK>();
-	sinkInQ->add(chanP1Q);
-	sinkInQ->add(chanP2Q);
-	sinkInQ->add(chanP3Q);
+	auto chanP4Q2 = std::make_shared<CHAN>(L"P4Q2");
+	auto chanP5Q2 = std::make_shared<CHAN>(L"P5Q2");
+	auto chanP6Q2 = std::make_shared<CHAN>(L"P6Q2");
+	//
+	auto chanQ1C = std::make_shared<CHAN>(L"Q1C");
+	auto chanQ2C = std::make_shared<CHAN>(L"Q2C");
+	//
+	// Process Q1 input channels sink setup
+	SINK_PTR sinkInQ1 = std::make_shared<SINK>();
+	sinkInQ1->add(chanP1Q1);
+	sinkInQ1->add(chanP2Q1);
+	sinkInQ1->add(chanP3Q1);
+	//
+	// Process Q2 input channels sink setup
+	SINK_PTR sinkInQ2 = std::make_shared<SINK>();
+	sinkInQ2->add(chanP4Q2);
+	sinkInQ2->add(chanP5Q2);
+	sinkInQ2->add(chanP6Q2);
+	//
+	// Process C input channels multiplex setup
+	MUX_PTR muxInC = std::make_shared<MUX>();
+	muxInC->add(chanQ1C);
+	muxInC->add(chanQ2C);
 	////////////////////////////////////////////////////////////////////////////
 
-	std::cout << ">>> Application: Sink type input (n:1/n) Testbed" << std::endl;
+	std::cout << ">>> Application: Sink-Mux Exemplary System" << std::endl;
 	std::cout << "<<< Run >>>" << std::endl;
 
 	////////////////////////////////////////////////////////////////////////////
 	//  PROCESSES
 	////////////////////////////////////////////////////////////////////////////
 	//
-	//  S = {P1 || P2 || P3 || Q}
+	//	 S = {S1 || S2 || C}
+	//	S1 = {P1 || P2 || P3 || Q1}
+	//	S2 = {P4 || P5 || P6 || Q2}
 	//
 	////////////////////////////////////////////////////////////////////////////
 	//
 	{
 		parsys parSys(
-			   chanP1Q,		// actorP1
-			   chanP2Q,		// actorP2
-			   chanP3Q,		// actorP3
-			   sinkInQ   	// actorQ
+			   chanP1Q1,		// actorP1
+			   chanP2Q1,		// actorP2
+			   chanP3Q1,		// actorP3
+			   chanP4Q2,		// actorP4
+			   chanP5Q2,		// actorP5
+			   chanP6Q2,		// actorP6
+			   sinkInQ1, chanQ1C,   	// actorQ1
+			   sinkInQ2, chanQ2C,   	// actorQ2
+			   muxInC   		// actorC
 			   );
 	}   // 	RAII => join
 	//
@@ -106,7 +136,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		wof << wss.str();
 	}
 	//
-	for(auto i = 0; i < 3; i++)
+	for(auto i = 0; i < 6; i++)
 	{
 		std::wstringstream wss;
 		wss << L"RCC Delay P" << std::to_wstring(i+1)

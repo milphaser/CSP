@@ -777,6 +777,12 @@ Description
 	C:\My_CONFERENCES\__CONFERENCES__\RU\аг2020\FIG\Fig. x.1.3. Sink-Mux Exemplary System.png
 	Logs
 
+	0019.ACTOR ++++++
+Project Name
+	CSP_3P1Q_sink.08RC => CSP_Sink_Mux.08RC => CSP_Sink_Mux.091RC => CSP_ACTOR_Sink_Mux.091RC
+Description
+	Project 0005.0025.0019 Actor Implementation
+
 	0023.ACTOR ++++++
 Project Name
 	CSP_ACTOR_MB.091RC
